@@ -1,0 +1,62 @@
+"""
+generate_data.py
+----------------
+Generates a small set of synthetic clinical notes and saves them
+to clinical_notes.txt.
+
+Usage:
+    python data/generate_data.py
+"""
+
+import os
+
+NOTES = [
+    """\
+NOTE_ID: 001
+Patient presents with chest pain and shortness of breath.
+Past history of hypertension and type 2 diabetes mellitus.
+No evidence of pneumonia.
+Prescribed metformin 500mg and lisinopril 10mg on discharge.
+""",
+    """\
+NOTE_ID: 002
+Admitted with acute myocardial infarction.
+Symptoms include diaphoresis and pedal edema.
+No history of atrial fibrillation.
+Started on aspirin, atorvastatin, and clopidogrel.
+""",
+    """\
+NOTE_ID: 003
+Patient has COPD with worsening dyspnea and productive cough.
+Background of HTN. Denies chest pain.
+Medications: albuterol, tiotropium, prednisone.
+""",
+    """\
+NOTE_ID: 004
+Presenting with urinary tract infection (UTI).
+Symptoms: dysuria and frequency.
+No fever detected on examination.
+Prescribed ciprofloxacin 500mg twice daily.
+""",
+    """\
+NOTE_ID: 005
+DVT confirmed on Doppler ultrasound.
+Patient reports leg swelling and pain.
+No pulmonary embolism on CT angiography.
+Anticoagulation started with rivaroxaban.
+""",
+]
+
+
+def main():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    output_path = os.path.join(script_dir, "clinical_notes.txt")
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write("\n---\n".join(NOTES))
+
+    print(f"[generate_data.py] Wrote {len(NOTES)} notes to: {output_path}")
+
+
+if __name__ == "__main__":
+    main()
